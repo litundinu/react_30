@@ -14,7 +14,7 @@ class SignUp extends Component {
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(this.state)
+        // console.log(this.state)
     }
     
     handleUserInput (e) {
@@ -26,10 +26,28 @@ class SignUp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        // fetch('/', {
+        //     method: 'POST',
+        //     data: {
+        //         email: this.state.email,
+        //         name: this.state.name,
+        //         lastname: this.state.lastname,
+        //         password: this.state.password
+        //     }
+        // })
+        // .then(function(response) {
+        //     return response.json()
+        // })
+        // .then(function(body) {
+        //     console.log('from body', body)
+        // });
+    
     }
     
-  
-    render() {
+ 
+
+
+render() {
     return(
     <div>
             <h5>
