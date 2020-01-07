@@ -9,12 +9,13 @@ class SignUp extends Component {
             name: "James",
             lastname: "Bond",
             password: "MyPassword",
-            passwordConfirmation: ""
+            passwordConfirmation: "",
+            flash: ""
         
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
-        // console.log(this.state)
+        // console.log(this.state.flash)
     }
     
     handleUserInput (e) {
@@ -26,22 +27,20 @@ class SignUp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        // fetch('/', {
-        //     method: 'POST',
-        //     data: {
-        //         email: this.state.email,
-        //         name: this.state.name,
-        //         lastname: this.state.lastname,
-        //         password: this.state.password
-        //     }
-        // })
-        // .then(function(response) {
-        //     return response.json()
-        // })
-        // .then(function(body) {
-        //     console.log('from body', body)
-        // });
-    
+        fetch("/signup",
+        {
+            method:  'POST',
+            headers:  new Headers({
+                    'Content-Type':  'application/json'
+            }),
+            body:  JSON.stringify(this.state),
+        })
+        .then(res  =>  res.json())
+        .then(
+            res  =>  this.setState({"flash":  res.flash}),
+            err  =>  this.setState({"flash":  err.flash})
+        )
+        
     }
     
  
@@ -57,6 +56,7 @@ render() {
                     <li>{this.state.lastname}</li>
                     <li>{this.state.password}</li>
                     <li>{this.state.passwordConfirmation}</li>
+                    <li>flash: {this.state.flash}</li>
                 </ul>
             </h5>
             <form onSubmit={this.handleSubmit}>
